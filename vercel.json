@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_ENVIRONMENT": "production"
+  },
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 1024
+    }
+  }
+}
