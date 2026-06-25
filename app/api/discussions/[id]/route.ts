@@ -4,7 +4,7 @@ import { discussionStore, initializeDiscussions } from '../route';
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
-) {
+): Promise<NextResponse> {
   try {
     initializeDiscussions();
     const { id } = await params;

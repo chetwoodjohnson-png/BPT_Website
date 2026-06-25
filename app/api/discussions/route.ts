@@ -52,7 +52,7 @@ function initializeDiscussions() {
 }
 
 // GET all discussions
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     initializeDiscussions();
     const discussions = Array.from(discussionStore.values()).sort(
@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
 }
 
 // POST new discussion
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     initializeDiscussions();
     const body = await request.json();
