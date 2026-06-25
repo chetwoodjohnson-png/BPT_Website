@@ -70,17 +70,6 @@ export default function LatestNewsPage() {
           ))
         )}
       </section>
-
-      <section className="ctaBand">
-        <h2>Content Management System Ready</h2>
-        <p>
-          This page is integrated with <strong>{dataSource === "supabase" ? "Supabase" : "fallback data"}</strong>. 
-          Connect your Supabase database with the <code>news_articles</code> table to manage content dynamically.
-        </p>
-        <p style={{ fontSize: "0.9em", color: "#666", marginTop: "1em" }}>
-          Configure environment variables to enable Supabase integration. See documentation for setup details.
-        </p>
-      </section>
     </>
   );
 }
