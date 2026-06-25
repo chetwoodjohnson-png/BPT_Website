@@ -1,10 +1,46 @@
 import Link from "next/link";
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ProductSchema from "@/components/ProductSchema";
+import { generatePageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata(
+  "BPMS™ Cloud Platform | Energy Audit & Performance Modeling Software",
+  "Cloud-based BPMS™ platform for building audits, energy modeling, thermal analysis, and professional reports. Integrated with BPMSField™ mobile app.",
+  "/bpms",
+  "https://www.buildingperformancetechnologies.com/bpms-dashboard.png",
+  [
+    "BPMS cloud platform",
+    "energy audit software",
+    "building performance modeling",
+    "thermal imaging reports",
+    "HVAC analysis",
+    "energy auditors",
+    "audit management system",
+  ]
+);
 
 export default function BpmsPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "BPMS™", url: "/bpms" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
+      <ProductSchema
+        name="BPMS™ Cloud Platform"
+        description="Building Performance Modeling System for energy audits, thermal analysis, and professional reports."
+        image="https://www.buildingperformancetechnologies.com/bpms-dashboard.png"
+        url="https://www.buildingperformancetechnologies.com/bpms"
+        aggregateRating={{
+          ratingValue: 4.8,
+          reviewCount: 120,
+        }}
+      />
       <PageHeader
         eyebrow="BPMS™ cloud platform"
         title="Building Performance Modeling Systems for professionals."

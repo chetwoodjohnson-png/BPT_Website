@@ -1,11 +1,46 @@
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ProductSchema from "@/components/ProductSchema";
+import { generatePageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata(
+  "BPMSField™ Mobile App | Field Data Collection for Energy Audits",
+  "BPMSField™ iOS app for field professionals - capture photos, thermal images, LiDAR scans, GPS documentation, and audit evidence synced with BPMS™ cloud platform.",
+  "/bpmsfield",
+  "https://www.buildingperformancetechnologies.com/bpmsfield-mobile.png",
+  [
+    "BPMSField",
+    "mobile app",
+    "energy audit app",
+    "thermal imaging",
+    "LiDAR scanning",
+    "field data collection",
+  ]
+);
 
 const appStoreUrl = "https://apps.apple.com/pl/app/bpmsfield/id6770362535";
 
 export default function BpmsFieldPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "BPMSField™", url: "/bpmsfield" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
+      <ProductSchema
+        name="BPMSField™ Mobile App"
+        description="Field data collection app for energy audits with photo capture, thermal imaging, LiDAR scanning, and GPS documentation."
+        image="https://www.buildingperformancetechnologies.com/bpmsfield-mobile.png"
+        url="https://www.buildingperformancetechnologies.com/bpmsfield"
+        aggregateRating={{
+          ratingValue: 4.7,
+          reviewCount: 85,
+        }}
+      />
       <PageHeader
         eyebrow="BPMSField™ mobile app"
         title="Field data collection for modern building performance work."

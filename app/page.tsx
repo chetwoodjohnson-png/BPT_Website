@@ -1,4 +1,20 @@
 import Link from "next/link";
+import { generatePageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata(
+  "Energy Audit Software & Building Diagnostics",
+  "Cloud-based energy audit platform with mobile field tools, thermal imaging, and building performance modeling. BPMS™, BPMSField™, and FluxSense Analyzer™.",
+  "/",
+  "https://www.buildingperformancetechnologies.com/og-image.png",
+  [
+    "energy audit software",
+    "building performance",
+    "HVAC analysis",
+    "thermal imaging",
+    "energy auditors",
+  ]
+);
 
 export default function HomePage() {
   return (

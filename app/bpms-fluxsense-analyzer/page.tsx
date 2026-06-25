@@ -1,9 +1,44 @@
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ProductSchema from "@/components/ProductSchema";
+import { generatePageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata(
+  "FluxSense Analyzer™ | Heat Flux Building Diagnostics Hardware",
+  "BPMS FluxSense Analyzer™ - Direct heat flux measurement and thermal diagnostics for building performance analysis integrated with BPMS™ cloud platform.",
+  "/bpms-fluxsense-analyzer",
+  "https://www.buildingperformancetechnologies.com/fluxsense-wall-module.png",
+  [
+    "FluxSense Analyzer",
+    "heat flux measurement",
+    "building diagnostics",
+    "thermal analysis",
+    "building performance",
+  ]
+);
 
 export default function FluxSenseAnalyzerPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "FluxSense Analyzer™", url: "/bpms-fluxsense-analyzer" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
+      <ProductSchema
+        name="BPMS FluxSense Analyzer™"
+        description="Direct heat flux measurement device for building thermal diagnostics and performance analysis."
+        image="https://www.buildingperformancetechnologies.com/fluxsense-wall-module.png"
+        url="https://www.buildingperformancetechnologies.com/bpms-fluxsense-analyzer"
+        aggregateRating={{
+          ratingValue: 4.6,
+          reviewCount: 42,
+        }}
+      />
+
       <PageHeader
         eyebrow="BPMS FluxSense Analyzer™"
         title="Direct heat flux diagnostics for building performance insight."

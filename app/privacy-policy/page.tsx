@@ -1,13 +1,23 @@
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { generatePageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Privacy Policy - Building Performance Technologies, LLC",
-  description: "Privacy policy for Building Performance Technologies, LLC and our products.",
-};
+export const metadata = generatePageMetadata(
+  "Privacy Policy - Building Performance Technologies",
+  "Privacy policy for BPT products and services. Information on how we collect, use, and protect your data.",
+  "/privacy-policy"
+);
 
 export default function PrivacyPolicyPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Legal", url: "#" },
+    { name: "Privacy Policy", url: "/privacy-policy" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"

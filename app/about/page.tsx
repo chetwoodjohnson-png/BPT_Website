@@ -1,8 +1,25 @@
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { generatePageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata(
+  "About Building Performance Technologies",
+  "Learn about BPT mission, team, and products. We develop software and hardware solutions for building performance professionals.",
+  "/about",
+  "https://www.buildingperformancetechnologies.com/logo.png",
+  ["about BPT", "company mission", "building performance", "BPMS"]
+);
 
 export default function AboutPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="About"
         title="Building Performance Technologies, LLC"

@@ -1,5 +1,20 @@
 import PageHeader from "@/components/PageHeader";
 import DiscussionBoard from "@/components/DiscussionBoard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { generatePageMetadata } from "@/lib/metadata";
+
+export const metadata = generatePageMetadata(
+  "Community Forum | Building Performance Technologies",
+  "Discussion forum for energy auditors, building professionals, and BPMS™ users. Share best practices, ask product questions, and connect with the community.",
+  "/forum",
+  undefined,
+  [
+    "community forum",
+    "energy audit forum",
+    "BPMS discussions",
+    "building performance community",
+  ]
+);
 
 const topics = [
   { title: "Energy audit best practices", count: "12 topics", text: "Discuss audit workflows, field documentation, reporting, and customer communication." },
@@ -9,8 +24,14 @@ const topics = [
 ];
 
 export default function ForumPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Forum", url: "/forum" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Forum"
         title="Community and support forum."

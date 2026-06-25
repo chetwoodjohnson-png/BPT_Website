@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import type { NewsArticle } from "@/lib/supabase";
 
 interface ApiResponse {
@@ -16,6 +17,11 @@ export default function LatestNewsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [dataSource, setDataSource] = useState<string>("");
+
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Latest News", url: "/latest-news" },
+  ];
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -38,6 +44,7 @@ export default function LatestNewsPage() {
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Latest News"
         title="Updates from Building Performance Technologies."

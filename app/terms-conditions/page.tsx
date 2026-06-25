@@ -1,13 +1,23 @@
 import PageHeader from "@/components/PageHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { generatePageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Terms & Conditions - Building Performance Technologies, LLC",
-  description: "Terms and conditions for Building Performance Technologies, LLC products and services.",
-};
+export const metadata = generatePageMetadata(
+  "Terms & Conditions - Building Performance Technologies",
+  "Terms and conditions for BPT products and services. Legal agreement for using our software and platforms.",
+  "/terms-conditions"
+);
 
 export default function TermsConditionsPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Legal", url: "#" },
+    { name: "Terms & Conditions", url: "/terms-conditions" },
+  ];
+
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Legal"
         title="Terms & Conditions"
