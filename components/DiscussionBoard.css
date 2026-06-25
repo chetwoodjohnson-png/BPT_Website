@@ -1,0 +1,343 @@
+.discussionBoard {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Discussions List View */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.listHeader h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.newThreadButton {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newThreadButton:hover {
+  background-color: #0052a3;
+}
+
+.discussionsList {
+  display: grid;
+  gap: 1rem;
+}
+
+.discussionCard {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.discussionCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #0066cc;
+}
+
+.cardContent h4 {
+  margin: 0 0 0.5rem 0;
+  color: #0066cc;
+  font-size: 1.1rem;
+}
+
+.cardContent p {
+  margin: 0.5rem 0 1rem 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.replyCount {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.author {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* New Thread Form */
+.newThreadForm,
+.replyForm {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.newThreadForm h3,
+.replyForm h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.newThreadForm input,
+.newThreadForm select,
+.newThreadForm textarea,
+.replyForm input,
+.replyForm textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.newThreadForm input:focus,
+.newThreadForm select:focus,
+.newThreadForm textarea:focus,
+.replyForm input:focus,
+.replyForm textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.formButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.submitButton {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #0052a3;
+}
+
+.cancelButton {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cancelButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* Discussion Thread View */
+.discussionThread {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #0066cc;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+.backButton:hover {
+  color: #0052a3;
+}
+
+.originalPost {
+  background: white;
+  border: 2px solid #0066cc;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.postHeader h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.postContent {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin: 1rem 0;
+}
+
+.postFooter {
+  display: flex;
+  gap: 2rem;
+  color: #999;
+  font-size: 0.9rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* Replies Section */
+.repliesSection {
+  margin-bottom: 2rem;
+}
+
+.repliesSection h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.reply {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.replyHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.replyContent {
+  color: #555;
+  line-height: 1.6;
+  margin: 0.75rem 0 0 0;
+}
+
+/* No Discussions State */
+.noDiscussions {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e8f0ff;
+  color: #0066cc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.timestamp {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .discussionBoard {
+    padding: 0 1rem;
+  }
+
+  .listHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .newThreadButton {
+    width: 100%;
+  }
+
+  .originalPost {
+    padding: 1.5rem 1rem;
+  }
+
+  .postHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .formButtons {
+    flex-direction: column-reverse;
+  }
+
+  .submitButton,
+  .cancelButton {
+    width: 100%;
+  }
+
+  .postFooter {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .replyHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
