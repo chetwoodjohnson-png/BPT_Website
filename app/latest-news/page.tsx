@@ -1,24 +1,41 @@
-import PageHeader from "@/components/PageHeader";
+'use client'
 
-const posts = [
-  {
-    date: "Company Update",
-    title: "Building Performance Technologies expands the BPMS™ ecosystem",
-    text: "The company is developing a connected system that brings together cloud software, mobile field capture, thermal documentation, LiDAR scanning, and building performance analysis."
-  },
-  {
-    date: "Product News",
-    title: "BPMSField™ supports mobile-first building documentation",
-    text: "BPMSField™ is positioned as the mobile field companion for collecting photos, thermal images, LiDAR scans, and audit evidence directly from the jobsite."
-  },
-  {
-    date: "Innovation",
-    title: "BPMS FluxSense Analyzer™ concept targets direct heat flux measurement",
-    text: "The analyzer concept is designed to strengthen building diagnostics by measuring thermal transfer and supporting cloud-based performance modeling."
-  }
-];
+import { useEffect, useState } from "react";
+import PageHeader from "@/components/PageHeader";
+import type { NewsArticle } from "@/lib/supabase";
+
+interface ApiResponse {
+  articles: NewsArticle[];
+  source: string;
+  total: number;
+  note?: string;
+}
 
 export default function LatestNewsPage() {
+  const [articles, setArticles] = useState<NewsArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [dataSource, setDataSource] = useState<string>("");
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch("/api/news?limit=10");
+        if (!response.ok) throw new Error("Failed to fetch news");
+        
+        const data: ApiResponse = await response.json();
+        setArticles(data.articles);
+        setDataSource(data.source);
+        setLoading(false);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Error loading news");
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <>
       <PageHeader
@@ -28,18 +45,41 @@ export default function LatestNewsPage() {
       />
 
       <section className="section grid3">
-        {posts.map((post) => (
-          <article className="newsCard" key={post.title}>
-            <p className="newsMeta">{post.date}</p>
-            <h3>{post.title}</h3>
-            <p>{post.text}</p>
-          </article>
-        ))}
+        {loading ? (
+          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>
+            Loading articles...
+          </p>
+        ) : error ? (
+          <p style={{ gridColumn: "1 / -1", textAlign: "center", color: "red" }}>
+            {error}
+          </p>
+        ) : articles.length === 0 ? (
+          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>
+            No articles available yet.
+          </p>
+        ) : (
+          articles.map((article) => (
+            <article className="newsCard" key={article.id}>
+              <p className="newsMeta">{article.category}</p>
+              <h3>{article.title}</h3>
+              <p>{article.excerpt || article.content.substring(0, 150)}...</p>
+              <small style={{ color: "#999" }}>
+                {new Date(article.published_at).toLocaleDateString()}
+              </small>
+            </article>
+          ))
+        )}
       </section>
 
       <section className="ctaBand">
-        <h2>News page ready for CMS integration</h2>
-        <p>This page can later be connected to a blog CMS, Supabase table, Markdown files, or a headless content system.</p>
+        <h2>Content Management System Ready</h2>
+        <p>
+          This page is integrated with <strong>{dataSource === "supabase" ? "Supabase" : "fallback data"}</strong>. 
+          Connect your Supabase database with the <code>news_articles</code> table to manage content dynamically.
+        </p>
+        <p style={{ fontSize: "0.9em", color: "#666", marginTop: "1em" }}>
+          Configure environment variables to enable Supabase integration. See documentation for setup details.
+        </p>
       </section>
     </>
   );
