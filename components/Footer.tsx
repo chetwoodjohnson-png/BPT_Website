@@ -61,7 +61,8 @@ export default function Footer() {
         <div className="copyright">
           <p>
             © {currentYear} Building Performance Technologies, LLC. All rights reserved.<br />
-            BPMS™, BPMSField™, and FluxSense Analyzer™ are trademarks of Building Performance Technologies, LLC.
+            BPMS™, BPMSField™, and FluxSense Analyzer™ are trademarks of Building Performance Technologies, LLC.<br />
+            Patents pending.
           </p>
         </div>
         <div className="legalLinks">
