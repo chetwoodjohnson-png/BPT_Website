@@ -3,12 +3,13 @@ import { discussionStore, initializeDiscussions } from '../../route';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     initializeDiscussions();
+    const { id } = await params;
     const body = await request.json();
-    const discussion = discussionStore.get(params.id);
+    const discussion = discussionStore.get(id);
 
     if (!discussion) {
       return NextResponse.json({ error: 'Discussion not found' }, { status: 404 });
@@ -22,7 +23,7 @@ export async function POST(
     };
 
     discussion.replies.push(newReply);
-    discussionStore.set(params.id, discussion);
+    discussionStore.set(id, discussion);
 
     return NextResponse.json(discussion, { status: 201 });
   } catch (error) {

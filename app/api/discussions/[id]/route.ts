@@ -3,11 +3,12 @@ import { discussionStore, initializeDiscussions } from '../route';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     initializeDiscussions();
-    const discussion = discussionStore.get(params.id);
+    const { id } = await params;
+    const discussion = discussionStore.get(id);
 
     if (!discussion) {
       return NextResponse.json({ error: 'Discussion not found' }, { status: 404 });
