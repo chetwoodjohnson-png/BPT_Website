@@ -3,6 +3,7 @@ import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductSchema from "@/components/ProductSchema";
+import FreeTrialBadge from "@/components/FreeTrialBadge";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
@@ -46,6 +47,8 @@ export default function BpmsPage() {
         title="Building Performance Modeling Systems for professionals."
         description="BPMS™ is a cloud-based platform for building audits, energy documentation, field evidence, performance modeling, reports, proposals, and operational workflows."
       />
+
+      <FreeTrialBadge />
 
       <section className="section">
         <div className="actions">
