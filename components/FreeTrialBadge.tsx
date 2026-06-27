@@ -2,7 +2,15 @@
 
 export default function FreeTrialBadge() {
   return (
-    <div style={{ position: "fixed", top: "140px", right: "20px", zIndex: 10, pointerEvents: "none" }}>
+    <div
+      style={{
+        position: "fixed",
+        top: "220px",
+        right: "20px",
+        zIndex: 10,
+        pointerEvents: "none",
+      }}
+    >
       <a 
         href="https://bpmscloud.com" 
         target="_blank" 
