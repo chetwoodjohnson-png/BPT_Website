@@ -1,17 +1,17 @@
 import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 
 export const metadata = generatePageMetadata(
-  "Privacy Policy - Building Performance Technologies",
-  "Privacy policy for BPT products and services. Information on how we collect, use, and protect your data.",
+  "Privacy Policy | Building Performance Technologies",
+  "Read how Building Performance Technologies collects, uses, stores, and protects data for BPMS software, BPMSField, and related services.",
   "/privacy-policy"
 );
 
 export default function PrivacyPolicyPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Legal", url: "#" },
     { name: "Privacy Policy", url: "/privacy-policy" },
   ];
 
@@ -123,6 +123,15 @@ export default function PrivacyPolicyPage() {
             Website: www.bpt-tech.com
           </p>
         </div>
+      </section>
+
+      <section className="section">
+        <h2>Explore BPT products</h2>
+        <p>
+          Learn how data is used in <Link href="/bpms">BPMS software</Link>,
+          <Link href="/bpmsfield"> BPMSField mobile workflows</Link>, and
+          <Link href="/bpms-fluxsense-analyzer"> FluxSense diagnostics</Link>.
+        </p>
       </section>
     </>
   );

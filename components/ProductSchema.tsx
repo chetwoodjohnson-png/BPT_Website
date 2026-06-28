@@ -3,10 +3,6 @@ interface ProductSchemaProps {
   description: string;
   image: string;
   url: string;
-  aggregateRating?: {
-    ratingValue: number;
-    reviewCount: number;
-  };
   price?: string;
   priceCurrency?: string;
 }
@@ -16,7 +12,6 @@ export default function ProductSchema({
   description,
   image,
   url,
-  aggregateRating,
   price,
   priceCurrency = "USD",
 }: ProductSchemaProps) {
@@ -40,15 +35,6 @@ export default function ProductSchema({
             name: "Building Performance Technologies, LLC",
             url: "https://www.buildingperformancetechnologies.com",
           },
-          ...(aggregateRating && {
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: aggregateRating.ratingValue,
-              ratingCount: aggregateRating.reviewCount,
-              bestRating: "5",
-              worstRating: "1",
-            },
-          }),
           ...(price && {
             offers: {
               "@type": "Offer",

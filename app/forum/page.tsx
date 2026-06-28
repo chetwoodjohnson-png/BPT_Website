@@ -2,10 +2,11 @@ import PageHeader from "@/components/PageHeader";
 import DiscussionBoard from "@/components/DiscussionBoard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 
 export const metadata = generatePageMetadata(
-  "Community Forum | Building Performance Technologies",
-  "Discussion forum for energy auditors, building professionals, and BPMS™ users. Share best practices, ask product questions, and connect with the community.",
+  "Building Performance Forum | Energy Audit Q&A and BPMS Help",
+  "Join community discussions on energy audit workflows, BPMS software, BPMSField capture, and building diagnostics best practices.",
   "/forum",
   undefined,
   [
@@ -58,7 +59,11 @@ export default function ForumPage() {
 
       <section className="ctaBand">
         <h2>Forum integration options</h2>
-        <p>This page currently features a custom Next.js discussion board. You can also connect to Supabase, Discourse, Circle, or Slack community links.</p>
+        <p>
+          This page currently features a custom Next.js discussion board. You can also connect to Supabase, Discourse, Circle, or Slack community links.
+          Ready to evaluate tools? Start with <Link href="/bpms">BPMS software</Link> or
+          <Link href="/bpmsfield"> BPMSField mobile app</Link>.
+        </p>
       </section>
     </>
   );

@@ -7,11 +7,15 @@ export function generatePageMetadata(
   ogImage?: string,
   keywords?: string[]
 ): Metadata {
+  const brandName = "Building Performance Technologies";
   const canonical = `https://www.buildingperformancetechnologies.com${path}`;
   const defaultOgImage = "https://www.buildingperformancetechnologies.com/og-image.png";
+  const finalTitle = title.toLowerCase().includes(brandName.toLowerCase())
+    ? title
+    : `${title} | ${brandName}`;
 
   return {
-    title: `${title} | Building Performance Technologies`,
+    title: finalTitle,
     description,
     keywords,
     openGraph: {

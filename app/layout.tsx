@@ -3,10 +3,16 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
+const verifiedSameAs = (process.env.NEXT_PUBLIC_ORG_SAMEAS || "")
+  .split(",")
+  .map((url) => url.trim())
+  .filter((url) => url.startsWith("http://") || url.startsWith("https://"));
+
 export const metadata: Metadata = {
-  title: "Building Performance Technologies | BPMS™ Energy Audit Software",
+  metadataBase: new URL("https://www.buildingperformancetechnologies.com"),
+  title: "Energy Audit Software for Pros | BPMS, BPMSField, FluxSense",
   description:
-    "Cloud-based energy audit software, mobile field tools, and thermal analysis for building performance professionals. BPMS™, BPMSField™, and FluxSense Analyzer™.",
+    "Energy audit software, field capture, and heat flux diagnostics for building performance professionals. Compare BPMS, BPMSField, and FluxSense workflows.",
   keywords: [
     "energy audit software",
     "building performance",
@@ -30,9 +36,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.buildingperformancetechnologies.com",
-    title: "Building Performance Technologies | BPMS™ Energy Audit Software",
+    title: "Energy Audit Software for Pros | BPMS, BPMSField, FluxSense",
     description:
-      "Integrated software and hardware solutions for building performance modeling and field intelligence.",
+      "Compare BPMS software, BPMSField mobile capture, and FluxSense diagnostics for building performance workflows.",
     siteName: "Building Performance Technologies",
     images: [
       {
@@ -53,15 +59,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Building Performance Technologies | BPMS™",
+    title: "Energy Audit Software for Pros | BPT",
     description:
-      "Cloud-based energy audit software and building diagnostics for professionals.",
+      "Energy audit software, mobile field data capture, and thermal diagnostics for building performance teams.",
     images: ["https://www.buildingperformancetechnologies.com/og-image.png"],
-    creator: "@BPTech",
-    site: "@BPTech",
-  },
-  verification: {
-    google: "google-verification-code-here",
   },
   robots: {
     index: true,
@@ -111,14 +112,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "Customer Service",
-                telephone: "+1-CONTACT-INFO",
                 email: "info@bpt-tech.com",
               },
-              sameAs: [
-                "https://www.facebook.com/BPTech",
-                "https://www.linkedin.com/company/building-performance-technologies",
-                "https://twitter.com/BPTech",
-              ],
+              ...(verifiedSameAs.length > 0 ? { sameAs: verifiedSameAs } : {}),
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "US",
@@ -127,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* Structured Data - WebSite with Sitelinks Search Box */}
+        {/* Structured Data - WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -136,42 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": "WebSite",
               name: "Building Performance Technologies",
               url: "https://www.buildingperformancetechnologies.com",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate:
-                    "https://www.buildingperformancetechnologies.com/search?q={search_term_string}",
-                },
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
-        />
-
-        {/* Structured Data - Local Business */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Building Performance Technologies, LLC",
-              image: "https://www.buildingperformancetechnologies.com/logo.png",
-              description:
-                "Energy audit software and building diagnostics for professionals.",
-              url: "https://www.buildingperformancetechnologies.com",
-              telephone: "+1-CONTACT-INFO",
-              email: "info@bpt-tech.com",
-              priceRange: "$$",
-              areaServed: "US",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.8",
-                ratingCount: "250",
-                bestRating: "5",
-                worstRating: "1",
-              },
+              ...(verifiedSameAs.length > 0 ? { sameAs: verifiedSameAs } : {}),
             }),
           }}
         />

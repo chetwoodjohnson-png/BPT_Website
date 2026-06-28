@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata(
-  "Energy Audit Software & Building Diagnostics",
-  "Cloud-based energy audit platform with mobile field tools, thermal imaging, and building performance modeling. BPMS™, BPMSField™, and FluxSense Analyzer™.",
+  "Energy Audit Software, Field App, and Diagnostics",
+  "Compare BPMS software, BPMSField mobile capture, and FluxSense diagnostics for faster audits, clearer reports, and stronger retrofit decisions.",
   "/",
   "https://www.buildingperformancetechnologies.com/og-image.png",
   [
@@ -62,6 +62,27 @@ export default function HomePage() {
             <h3>FluxSense Analyzer™</h3>
             <p>Heat flux based diagnostic technology concept for direct thermal transfer measurement and building performance analysis.</p>
             <Link className="buttonSecondary" href="/bpms-fluxsense-analyzer">View analyzer</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Solutions by search intent</h2>
+        <div className="grid3">
+          <div className="card">
+            <h3>Need energy audit software?</h3>
+            <p>Start with BPMS to manage audits, model performance, and generate reports in a cloud platform.</p>
+            <Link className="buttonSecondary" href="/bpms">Energy audit software details</Link>
+          </div>
+          <div className="card">
+            <h3>Need a field data collection app?</h3>
+            <p>Use BPMSField for photo capture, thermal documentation, LiDAR measurements, and site evidence workflows.</p>
+            <Link className="buttonSecondary" href="/bpmsfield">Field app details</Link>
+          </div>
+          <div className="card">
+            <h3>Need heat flux diagnostics?</h3>
+            <p>Explore the FluxSense Analyzer concept for direct thermal transfer measurement and performance analysis.</p>
+            <Link className="buttonSecondary" href="/bpms-fluxsense-analyzer">Heat flux diagnostics details</Link>
           </div>
         </div>
       </section>

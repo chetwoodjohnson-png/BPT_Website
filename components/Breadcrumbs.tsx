@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface BreadcrumbItem {
   name: string;
   url: string;
@@ -8,6 +10,8 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+  const schemaItems = items.filter((item) => item.url.startsWith("/"));
+
   return (
     <>
       {/* Breadcrumbs HTML */}
@@ -15,9 +19,13 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         <ol style={{ display: "flex", gap: "0.5em", flexWrap: "wrap", listStyle: "none", padding: 0, margin: 0 }}>
           {items.map((item, index) => (
             <li key={item.url} style={{ display: "flex", alignItems: "center", gap: "0.5em" }}>
-              <a href={item.url} style={{ color: "#0066cc", textDecoration: "none" }}>
-                {item.name}
-              </a>
+              {item.url.startsWith("/") ? (
+                <Link href={item.url} style={{ color: "#0066cc", textDecoration: "none" }}>
+                  {item.name}
+                </Link>
+              ) : (
+                <span style={{ color: "#666" }}>{item.name}</span>
+              )}
               {index < items.length - 1 && <span style={{ color: "#666" }}>/</span>}
             </li>
           ))}
@@ -31,7 +39,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            itemListElement: items.map((item, index) => ({
+              itemListElement: schemaItems.map((item, index) => ({
               "@type": "ListItem",
               position: index + 1,
               name: item.name,

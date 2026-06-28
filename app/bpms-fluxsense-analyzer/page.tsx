@@ -2,12 +2,14 @@ import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductSchema from "@/components/ProductSchema";
+import FAQ from "@/components/FAQ";
+import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata(
-  "FluxSense Analyzer™ | Heat Flux Building Diagnostics Hardware",
-  "BPMS FluxSense Analyzer™ - Direct heat flux measurement and thermal diagnostics for building performance analysis integrated with BPMS™ cloud platform.",
+  "FluxSense Heat Flux Diagnostics | Building Performance Hardware",
+  "Explore the FluxSense Analyzer concept for direct heat flux measurement and building envelope diagnostics connected to BPMS analysis workflows.",
   "/bpms-fluxsense-analyzer",
   "https://www.buildingperformancetechnologies.com/fluxsense-wall-module.png",
   [
@@ -20,6 +22,24 @@ export const metadata: Metadata = generatePageMetadata(
 );
 
 export default function FluxSenseAnalyzerPage() {
+  const faqItems = [
+    {
+      question: "What is the FluxSense Analyzer concept?",
+      answer:
+        "FluxSense Analyzer is a building diagnostics hardware concept focused on direct heat flux measurement and thermal transfer analysis for building performance teams.",
+    },
+    {
+      question: "How does heat flux measurement help audits?",
+      answer:
+        "Heat flux data can provide direct evidence of thermal transfer through assemblies, helping teams compare measured behavior against modeled expectations.",
+    },
+    {
+      question: "How does FluxSense connect to BPMS workflows?",
+      answer:
+        "The concept is intended to support BPMS cloud analysis so measured thermal data can be reviewed alongside field evidence, reports, and retrofit recommendations.",
+    },
+  ];
+
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "FluxSense Analyzer™", url: "/bpms-fluxsense-analyzer" },
@@ -33,10 +53,6 @@ export default function FluxSenseAnalyzerPage() {
         description="Direct heat flux measurement device for building thermal diagnostics and performance analysis."
         image="https://www.buildingperformancetechnologies.com/fluxsense-wall-module.png"
         url="https://www.buildingperformancetechnologies.com/bpms-fluxsense-analyzer"
-        aggregateRating={{
-          ratingValue: 4.6,
-          reviewCount: 42,
-        }}
       />
 
       <PageHeader
@@ -89,6 +105,16 @@ export default function FluxSenseAnalyzerPage() {
           <div className="card"><h3>3. Analyze</h3><p>Send the data to BPMS™ for building performance modeling, comparison, reporting, and recommendations.</p></div>
         </div>
       </section>
+
+      <section className="section">
+        <h2>Where this fits in your stack</h2>
+        <p>
+          FluxSense is designed to complement <Link href="/bpms">BPMS software</Link> and
+          <Link href="/bpmsfield"> BPMSField mobile capture</Link> for a more complete building diagnostics workflow.
+        </p>
+      </section>
+
+      <FAQ items={faqItems} title="FluxSense Analyzer FAQ" />
     </>
   );
 }

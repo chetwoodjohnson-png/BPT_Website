@@ -2,12 +2,14 @@ import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductSchema from "@/components/ProductSchema";
+import FAQ from "@/components/FAQ";
+import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata(
-  "BPMSField™ Mobile App | Field Data Collection for Energy Audits",
-  "BPMSField™ iOS app for field professionals - capture photos, thermal images, LiDAR scans, GPS documentation, and audit evidence synced with BPMS™ cloud platform.",
+  "BPMSField App for Energy Audits | Photos, Thermal, LiDAR",
+  "Capture energy audit field data on mobile with photos, thermal images, LiDAR room scans, and site evidence designed for BPMS reporting workflows.",
   "/bpmsfield",
   "https://www.buildingperformancetechnologies.com/bpmsfield-mobile.png",
   [
@@ -23,6 +25,24 @@ export const metadata: Metadata = generatePageMetadata(
 const appStoreUrl = "https://apps.apple.com/pl/app/bpmsfield/id6770362535";
 
 export default function BpmsFieldPage() {
+  const faqItems = [
+    {
+      question: "What does BPMSField capture during an energy audit?",
+      answer:
+        "BPMSField supports photo capture, thermal image documentation, LiDAR-based room measurements, and location-aware field evidence for audit workflows.",
+    },
+    {
+      question: "Can BPMSField data be used in BPMS reports?",
+      answer:
+        "Yes. BPMSField is designed to support BPMS cloud reporting and proposal workflows by sending organized field evidence to your building performance process.",
+    },
+    {
+      question: "Is BPMSField only for auditors?",
+      answer:
+        "No. It is suitable for energy auditors, HVAC teams, inspectors, weatherization programs, and contractors who document conditions on site.",
+    },
+  ];
+
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "BPMSField™", url: "/bpmsfield" },
@@ -36,10 +56,6 @@ export default function BpmsFieldPage() {
         description="Field data collection app for energy audits with photo capture, thermal imaging, LiDAR scanning, and GPS documentation."
         image="https://www.buildingperformancetechnologies.com/bpmsfield-mobile.png"
         url="https://www.buildingperformancetechnologies.com/bpmsfield"
-        aggregateRating={{
-          ratingValue: 4.7,
-          reviewCount: 85,
-        }}
       />
       <PageHeader
         eyebrow="BPMSField™ mobile app"
@@ -88,6 +104,16 @@ export default function BpmsFieldPage() {
           <p>Captured field evidence can support the larger BPMS™ workflow for audits, reports, proposals, invoices, and performance documentation.</p>
         </div>
       </section>
+
+      <section className="section">
+        <h2>Related software and diagnostics</h2>
+        <p>
+          Use BPMSField with <Link href="/bpms">BPMS cloud software</Link> for end-to-end audit documentation,
+          and review hardware progress on <Link href="/bpms-fluxsense-analyzer">FluxSense Analyzer</Link>.
+        </p>
+      </section>
+
+      <FAQ items={faqItems} title="BPMSField App FAQ" />
     </>
   );
 }

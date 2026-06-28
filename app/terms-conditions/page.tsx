@@ -1,17 +1,17 @@
 import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 
 export const metadata = generatePageMetadata(
-  "Terms & Conditions - Building Performance Technologies",
-  "Terms and conditions for BPT products and services. Legal agreement for using our software and platforms.",
+  "Terms and Conditions | Building Performance Technologies",
+  "Review terms for using BPMS software, BPMSField mobile tools, and Building Performance Technologies websites and services.",
   "/terms-conditions"
 );
 
 export default function TermsConditionsPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Legal", url: "#" },
     { name: "Terms & Conditions", url: "/terms-conditions" },
   ];
 
@@ -173,6 +173,15 @@ export default function TermsConditionsPage() {
             If you do not accept these terms, you may not use our products or services.
           </p>
         </div>
+      </section>
+
+      <section className="section">
+        <h2>Related product pages</h2>
+        <p>
+          For product details, visit <Link href="/bpms">BPMS</Link>,
+          <Link href="/bpmsfield"> BPMSField</Link>, and
+          <Link href="/bpms-fluxsense-analyzer"> FluxSense Analyzer</Link>.
+        </p>
       </section>
     </>
   );

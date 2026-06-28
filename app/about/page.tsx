@@ -2,10 +2,11 @@ import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = generatePageMetadata(
-  "About Building Performance Technologies",
-  "Learn about BPT mission, team, and products. We develop software and hardware solutions for building performance professionals.",
+  "About BPT | Building Performance Software Company",
+  "Learn how Building Performance Technologies develops BPMS software, BPMSField mobile tools, and FluxSense diagnostics for energy professionals.",
   "/about",
   "https://www.buildingperformancetechnologies.com/logo.png",
   ["about BPT", "company mission", "building performance", "BPMS"]
@@ -48,6 +49,15 @@ export default function AboutPage() {
           <div className="card"><h3>Mobile tools</h3><p>BPMSField™ brings capture, thermal, LiDAR, GPS, photos, and field documentation into one mobile workflow.</p></div>
           <div className="card"><h3>Hardware innovation</h3><p>BPMS FluxSense Analyzer™ is positioned as a diagnostic hardware concept for direct heat flux measurement and performance analysis.</p></div>
         </div>
+      </section>
+
+      <section className="section">
+        <h2>Explore the product platform</h2>
+        <p>
+          Review <Link href="/bpms">BPMS energy audit software</Link>,
+          <Link href="/bpmsfield"> BPMSField mobile workflows</Link>, and
+          <Link href="/bpms-fluxsense-analyzer"> FluxSense diagnostics</Link> to find the best fit for your team.
+        </p>
       </section>
     </>
   );

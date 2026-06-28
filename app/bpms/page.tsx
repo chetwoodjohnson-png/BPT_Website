@@ -4,12 +4,13 @@ import PageHeader from "@/components/PageHeader";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductSchema from "@/components/ProductSchema";
 import FreeTrialBadge from "@/components/FreeTrialBadge";
+import FAQ from "@/components/FAQ";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata(
-  "BPMS™ Cloud Platform | Energy Audit & Performance Modeling Software",
-  "Cloud-based BPMS™ platform for building audits, energy modeling, thermal analysis, and professional reports. Integrated with BPMSField™ mobile app.",
+  "BPMS Energy Audit Software | Reports, Proposals, Modeling",
+  "Run end-to-end energy audits in BPMS with field evidence, thermal documentation, report generation, proposals, invoices, and team workflows.",
   "/bpms",
   "https://www.buildingperformancetechnologies.com/bpms-dashboard.png",
   [
@@ -24,6 +25,24 @@ export const metadata: Metadata = generatePageMetadata(
 );
 
 export default function BpmsPage() {
+  const faqItems = [
+    {
+      question: "What is BPMS used for?",
+      answer:
+        "BPMS is energy audit software for managing building data, modeling performance, and producing professional reports, proposals, and invoices from one cloud workflow.",
+    },
+    {
+      question: "Does BPMS work with mobile field data collection?",
+      answer:
+        "Yes. BPMS is designed to work with BPMSField so teams can capture photos, thermal imagery, and LiDAR room data in the field and use that evidence in cloud reporting.",
+    },
+    {
+      question: "Who is BPMS for?",
+      answer:
+        "BPMS supports energy auditors, home performance contractors, HVAC professionals, weatherization teams, and building analysts who need repeatable diagnostics and reporting workflows.",
+    },
+  ];
+
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "BPMS™", url: "/bpms" },
@@ -37,10 +56,6 @@ export default function BpmsPage() {
         description="Building Performance Modeling System for energy audits, thermal analysis, and professional reports."
         image="https://www.buildingperformancetechnologies.com/bpms-dashboard.png"
         url="https://www.buildingperformancetechnologies.com/bpms"
-        aggregateRating={{
-          ratingValue: 4.8,
-          reviewCount: 120,
-        }}
       />
       <PageHeader
         eyebrow="BPMS™ cloud platform"
@@ -98,6 +113,16 @@ export default function BpmsPage() {
           ].map((item) => <span className="tag" key={item}>{item}</span>)}
         </div>
       </section>
+
+      <section className="section">
+        <h2>Explore connected workflows</h2>
+        <p>
+          Pair BPMS with the <Link href="/bpmsfield">BPMSField mobile app</Link> for on-site capture,
+          and follow implementation updates in <Link href="/latest-news">Latest News</Link>.
+        </p>
+      </section>
+
+      <FAQ items={faqItems} title="BPMS Software FAQ" />
     </>
   );
 }
