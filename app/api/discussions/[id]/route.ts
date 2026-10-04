@@ -1,26 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { discussionStore, initializeDiscussions } from '../route';
-
+import { NextResponse } from "next/server";
+import { getThread } from "@/lib/platform";
 export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-): Promise<NextResponse> {
-  try {
-    initializeDiscussions();
-    const { id } = await params;
-    const discussion = discussionStore.get(id);
-
-    if (!discussion) {
-      return NextResponse.json({ error: 'Discussion not found' }, { status: 404 });
-    }
-
-    return NextResponse.json(discussion);
-  } catch (error) {
-    console.error('Error fetching discussion:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch discussion' },
-      { status: 500 }
-    );
-  }
+  _: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const t = await getThread((await params).id);
+  return NextResponse.json(t || { error: "Not found" }, {
+    status: t ? 200 : 404,
+  });
 }
-

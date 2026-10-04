@@ -82,20 +82,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="BPT Journal and News"
+          href="/feed.xml"
+        />
         {/* Favicon */}
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-32x32.png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-16x16.png"
+          sizes="16x16"
+        />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
+
         {/* Theme Color */}
         <meta name="theme-color" content="#0a1628" />
         <meta name="msapplication-TileColor" content="#0a1628" />
-        
+
         {/* Structured Data - Organization */}
         <script
           type="application/ld+json"
@@ -108,7 +128,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               logo: "https://www.buildingperformancetechnologies.com/logo.png",
               description:
                 "Building Performance Technologies develops software, mobile field tools, and diagnostic hardware for energy auditors, HVAC professionals, and building analysts.",
-              foundingDate: "2010",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "Customer Service",
@@ -138,8 +157,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <a className="skipLink" href="#main-content">
+          Skip to content
+        </a>
         <Nav />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

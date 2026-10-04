@@ -7,6 +7,8 @@ const links = [
   { href: "/bpms", label: "BPMS™" },
   { href: "/bpms-fluxsense-analyzer", label: "FluxSense Analyzer™" },
   { href: "/bpmsfield", label: "BPMSField™" },
+  { href: "/blog", label: "Blog" },
+  { href: "/account", label: "Member sign in" },
   { href: "/latest-news", label: "Latest News" },
   { href: "/forum", label: "Forum" },
 ];
@@ -14,11 +16,15 @@ const links = [
 export default function Nav() {
   return (
     <header className="siteHeader">
-      <Link href="/" className="brand" aria-label="Building Performance Technologies home">
-        <Image 
-          src="/logo.png" 
-          alt="BPT - Building Performance Technologies" 
-          width={300} 
+      <Link
+        href="/"
+        className="brand"
+        aria-label="Building Performance Technologies home"
+      >
+        <Image
+          src="/logo.png"
+          alt="BPT - Building Performance Technologies"
+          width={300}
           height={100}
           priority
         />

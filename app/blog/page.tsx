@@ -12,9 +12,9 @@ export async function generateMetadata({
     p = pageNumber(s.page);
   return {
     ...generatePageMetadata(
-      "BPT News and Energy Industry Updates" + (p > 1 ? " — Page " + p : ""),
-      "Company news and energy industry developments from Building Performance Technologies.",
-      "/latest-news" + (p > 1 ? "?page=" + p : ""),
+      "Building Performance Blog" + (p > 1 ? " — Page " + p : ""),
+      "Energy efficiency, weatherization, HVAC, and building diagnostics insights from BPT.",
+      "/blog" + (p > 1 ? "?page=" + p : ""),
     ),
     ...(s.q || s.category ? { robots: { index: false, follow: true } } : {}),
   };
@@ -24,5 +24,5 @@ export default function Page({
 }: {
   searchParams: Promise<Search>;
 }) {
-  return <PostIndex kind="news" searchParams={searchParams} />;
+  return <PostIndex kind="blog" searchParams={searchParams} />;
 }
