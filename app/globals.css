@@ -126,3 +126,105 @@ p { color: var(--muted); margin: 0 0 18px; }
 .editorial button.button{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#06111f;font-weight:700}
 .editorial button:disabled{opacity:.6;cursor:wait}.editorial h2{margin-top:32px}.editorForm{display:grid;gap:18px;margin:24px 0}.editorForm small,.meta{font-size:13px;color:var(--muted)}
 .editorial .checkLabel{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.editorial input[type=checkbox]{width:20px;height:20px;margin:0}.toolbar{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}.searchForm{display:flex;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:28px}.searchForm label{flex:1;min-width:160px}.cardTitle{font-size:24px;line-height:1.25;letter-spacing:-.02em}.cover{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;margin-bottom:24px}.reading{max-width:900px}.reading h1{font-size:clamp(34px,5vw,60px);line-height:1.08;overflow-wrap:anywhere}.articleBody{font-size:18px;line-height:1.85;margin:36px 0}.articleBody h2{font-size:30px;line-height:1.2;margin-top:36px}.articleBody p,.userContent{overflow-wrap:anywhere}.userContent{white-space:pre-wrap}.articleBody a,.textLink{color:var(--brand);text-decoration:underline;text-underline-offset:4px}.pagination{display:flex;gap:20px;justify-content:space-between;margin:28px 0}.threadList{display:grid;gap:16px;margin:24px 0}.replyCard{margin:18px 0}.emptyState{padding:44px 20px;border:1px dashed var(--line);border-radius:20px;text-align:center}.feedback:not(:empty){padding:16px;border-left:3px solid var(--brand2);background:var(--panel);margin:16px 0;color:var(--text)}.previewPanel{padding:24px;border:1px solid var(--brand);border-radius:14px}.editorial details{margin:24px 0}.editorial summary{cursor:pointer;font-weight:bold;margin-bottom:16px}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--brand2);outline-offset:4px}.skipLink{position:absolute;left:16px;top:-80px;padding:12px;background:var(--bg);z-index:100}.skipLink:focus{top:12px}.brand img{max-width:100%;height:auto}.editorial .card{margin-bottom:16px}@media(max-width:600px){.siteHeader{position:relative}.brand{min-width:0;width:100%;max-width:300px}.section{padding:32px 5vw}.editorial .grid2{grid-template-columns:1fr}.toolbar{align-items:stretch}.searchForm{display:grid;width:100%}.reading h1{font-size:36px}}
+
+
+/* Blog/news card consistency */
+.editorial .grid3 {
+  align-items: stretch;
+}
+.postCard {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  min-width: 0;
+  height: 100%;
+}
+.coverFrame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(66,211,255,.18), transparent 35%),
+    linear-gradient(135deg, #0b1b30, #102b47);
+  border-bottom: 1px solid var(--line);
+}
+.postCover {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  margin: 0;
+}
+.coverPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--brand2);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.postCardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px 24px 26px;
+  min-width: 0;
+}
+.postCard .newsMeta {
+  margin-bottom: 10px;
+}
+.postCard .cardTitle {
+  margin: 0 0 12px;
+  min-height: 3.75em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.postCardBody > p:not(.newsMeta):not(.meta) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.postCard .meta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+.postCardLink {
+  display: inline-flex;
+  margin-top: 4px;
+  align-self: flex-start;
+}
+.reading > .cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  max-height: min(62vw, 506px);
+}
+@media (max-width: 1100px) and (min-width: 721px) {
+  .editorial .grid3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .editorial .grid3 {
+    grid-template-columns: 1fr;
+  }
+  .postCard .cardTitle {
+    min-height: auto;
+    -webkit-line-clamp: unset;
+  }
+  .postCardBody > p:not(.newsMeta):not(.meta) {
+    -webkit-line-clamp: 5;
+  }
+}
