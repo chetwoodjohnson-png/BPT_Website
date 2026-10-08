@@ -71,17 +71,25 @@ export default async function PostIndex({
         </div>
         <div className="grid3">
           {result.items.map((p) => (
-            <article className="newsCard" key={p.id}>
-              {p.image_url && (
-                <Image
-                  className="cover"
-                  unoptimized
-                  src={p.image_url}
-                  alt={p.image_alt}
-                  width={960}
-                  height={540}
-                />
-              )}
+            <article className="newsCard postCard" key={p.id}>
+              <div className="coverFrame">
+                {p.image_url ? (
+                  <Image
+                    className="cover postCover"
+                    unoptimized
+                    src={p.image_url}
+                    alt={p.image_alt}
+                    width={960}
+                    height={540}
+                    sizes="(max-width: 720px) 90vw, (max-width: 1100px) 45vw, 360px"
+                  />
+                ) : (
+                  <div className="coverPlaceholder" aria-hidden="true">
+                    <span>{p.category}</span>
+                  </div>
+                )}
+              </div>
+              <div className="postCardBody">
               <p className="newsMeta">{p.category}</p>
               <h2 className="cardTitle">
                 <Link href={postPath(p)}>{p.title}</Link>
@@ -92,9 +100,10 @@ export default async function PostIndex({
                 {Math.max(1, Math.ceil(p.content.split(/\s+/).length / 220))}{" "}
                 min read
               </p>
-              <Link className="textLink" href={postPath(p)}>
+              <Link className="textLink postCardLink" href={postPath(p)}>
                 Read article →
               </Link>
+              </div>
             </article>
           ))}
         </div>
